@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <display-name>ClinicServlet</display-name>
+
+    
+
+    <servlet>
+        <servlet-name>ClinicViewServlete</servlet-name>
+        <servlet-class>ru.lesson.servlets.ClinicViewServlete</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ClinicViewServlete</servlet-name>
+        <url-pattern>/clinic/view</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClinicAddServlet</servlet-name>
+        <servlet-class>ru.lesson.servlets.ClinicAddServlete</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClinicAddServlet</servlet-name>
+        <url-pattern>/clinic/add</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClinicDeleteServlet</servlet-name>
+        <servlet-class>ru.lesson.servlets.ClinicDeleteServlete</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ClinicDeleteServlet</servlet-name>
+        <url-pattern>/clinic/delete</url-pattern>
+    </servlet-mapping>
+
+
+    <servlet>
+        <servlet-name>ClinicEditServlete</servlet-name>
+        <servlet-class>ru.lesson.servlets.ClinicEditServlete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ClinicEditServlete</servlet-name>
+        <url-pattern>/clinic/edit</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>ClinicViewJsonServlete</servlet-name>
+        <servlet-class>ru.lesson.servlets.ClinicViewJsonServlete</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ClinicViewJsonServlete</servlet-name>
+        <url-pattern>/clinicJson/view</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ClinicAddClientJsonServlete</servlet-name>
+        <servlet-class>ru.lesson.servlets.ClinicAddClientJsonServlete</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>ClinicAddClientJsonServlete</servlet-name>
+        <url-pattern>/clinicJson/add</url-pattern>
+    </servlet-mapping>
+</web-app>
