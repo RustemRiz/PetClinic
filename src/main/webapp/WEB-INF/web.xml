@@ -46,24 +46,5 @@
         <servlet-name>ClinicEditServlete</servlet-name>
         <url-pattern>/clinic/edit</url-pattern>
     </servlet-mapping>
-    
-    <servlet>
-        <servlet-name>ClinicViewJsonServlete</servlet-name>
-        <servlet-class>ru.lesson.servlets.ClinicViewJsonServlete</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>ClinicViewJsonServlete</servlet-name>
-        <url-pattern>/clinicJson/view</url-pattern>
-    </servlet-mapping>
 
-    <servlet>
-        <servlet-name>ClinicAddClientJsonServlete</servlet-name>
-        <servlet-class>ru.lesson.servlets.ClinicAddClientJsonServlete</servlet-class>
-    </servlet>
-    
-    <servlet-mapping>
-        <servlet-name>ClinicAddClientJsonServlete</servlet-name>
-        <url-pattern>/clinicJson/add</url-pattern>
-    </servlet-mapping>
 </web-app>

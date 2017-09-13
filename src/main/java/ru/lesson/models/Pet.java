@@ -5,17 +5,18 @@ package ru.lesson.models;
  * Created by Рустем on 24.08.2017.
  */
 public interface Pet {
+
     /*
     *Подать звук
      */
-    public void makeSound();
+    void makeSound();
 
     /*
     *Имя питомца
      */
-    public String getName();
+    String getName();
 
-    public void setNamePet(String newName);
+    void setNamePet(String newName);
 
-
+    PetType getPetType();
 }

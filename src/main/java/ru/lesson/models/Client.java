@@ -14,8 +14,8 @@ public class Client {
     *@param id номер клиета
     *@param ru.lesson.clinic.Pet питомец
      */
-    public Client(String id, Pet pet){
-        this.name=id;
+    public Client(String name, Pet pet){
+        this.name=name;
         this.pet = pet;
     }
 
@@ -75,5 +75,9 @@ public class Client {
                 "name='" + name + '\'' +
                 ", pet=" + pet +
                 '}';
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,8 +1,6 @@
 package ru.lesson.servlets;
 
-import ru.lesson.models.Cat;
-import ru.lesson.models.Client;
-import ru.lesson.models.Dog;
+import ru.lesson.models.*;
 import ru.lesson.store.ClientCache;
 
 import javax.servlet.ServletException;
@@ -10,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -31,16 +30,21 @@ public class ClinicAddServlete extends HttpServlet {
     }
 
     public void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        cache.add(new Client(cache.generateId(), req.getParameter("clientName"), new Dog(req.getParameter("petName"))));
+        req.setCharacterEncoding("UTF-8");
+        addClient(req);
+        req.setAttribute("addClient",null);
         req.getRequestDispatcher(CLIENT_VIEW).forward(req,resp);
     }
 
     private void addClient(HttpServletRequest req){
-        if(req.getParameter("petType") == "1"){
-            cache.add(new Client(cache.generateId(), req.getParameter("clientName"), new Dog(req.getParameter("petName"))));
-        }
-        else{
-            cache.add(new Client(cache.generateId(), req.getParameter("clientName"), new Cat(req.getParameter("petName"))));
-        }
+        String type = req.getParameter("petType");
+        PetType petType = PetType.getPetTypeByString(req.getParameter("petType"));
+        Pet pet = PetFactory.createPet(petType, req.getParameter("petName"));
+        cache.add(new Client(req.getParameter("clientName"), pet));
+    }
+    @Override
+    public void destroy(){
+        super.destroy();
+        cache.close();
     }
 }

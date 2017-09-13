@@ -18,4 +18,10 @@ public class ClinicDeleteServlete extends HttpServlet {
         this.cache.delete(Integer.parseInt(req.getParameter("id")));
         response.sendRedirect(String.format("%s%s", req.getContextPath(), "/clinic/view"));
     }
+
+    @Override
+    public void destroy(){
+        super.destroy();
+        cache.close();
+    }
 }

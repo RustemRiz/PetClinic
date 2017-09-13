@@ -35,8 +35,18 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>Pet type :</td>
                     <td>
-                        <input type="submit" align="center" value="Добавить">
+                        <select name="petType" value="${client.pet.petType.value}">
+                            <option value="1">Собака</option>
+                            <option value="2">Кошка<</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" align="center" value="Изменить">
                     </td>
                 </tr>
             </table>

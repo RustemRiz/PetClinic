@@ -17,17 +17,27 @@
     <h1 align="center">Клиника<br>домашних <br>животных </h1>
 </div>
 <div id="header">   </div>
-file:/C:/Users/Рустем/IdeaProjects/lesson16/src/main/java/ru/lesson/servlets/ClinicViewServlete.java
+
 <div id="main">
     <div id="find">
         <form action="${pageContext.servletContext.contextPath}/clinic/view" method="GET">
             <input type="submit" name="addClient"  id="addButton" value="Добавить">
-        </form>  
+        </form>
         <form action="${pageContext.servletContext.contextPath}/clinic/view" method="post">
             <table>
                 <tr>
                     <td>Имя клиента</td>
                     <td>   <input type="text" name="findClientName">       </td>
+                </tr>
+                <tr>
+                    <td>Тип питомца</td>
+                    <td>
+                        <select  name="findPetType">
+                            <option value="1">Собака</option>
+                            <option value="2">Кошка</option>
+                            <option value="3">Любой</option>
+                        </select>
+                    </td>
                 </tr>
                 <tr>
                     <td>Имя питомца</td>
@@ -41,6 +51,7 @@ file:/C:/Users/Рустем/IdeaProjects/lesson16/src/main/java/ru/lesson/servle
             </table>
         </form>
     </div>
+
     <div id = "result">
         <c:choose>
         <c:when test="${clients.size()>0}">
@@ -71,6 +82,6 @@ file:/C:/Users/Рустем/IdeaProjects/lesson16/src/main/java/ru/lesson/servle
             </c:choose>
         </table>
     </div>
-
+</div>
 </body>
 </html>

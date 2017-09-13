@@ -15,7 +15,7 @@ public interface Storage {
 
     Collection<Client> values();
 
-    void add(final Client client);
+    int add(final Client client);
 
     void edit(final Client client);
 
@@ -23,7 +23,9 @@ public interface Storage {
 
     Client get(final int id);
 
-    List<Client> finded(String clientName, String petName);
+    List<Client> find(String clientName, String petName, String petType);
 
     int generateId();
+
+    void close();
 }

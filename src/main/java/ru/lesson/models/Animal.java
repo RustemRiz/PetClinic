@@ -5,6 +5,7 @@ package ru.lesson.models;
  */
 public abstract class Animal implements Pet{
     protected String name;
+    protected PetType petType;
     protected Animal(String name){
         this.name = name;
     }
@@ -17,7 +18,9 @@ public abstract class Animal implements Pet{
         return this.name;
     }
 
-
+    public PetType getPetType(){
+        return  this.petType;
+    }
 
     /*
 
