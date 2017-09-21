@@ -52,6 +52,7 @@ public class HibernateStorage implements Storage{
        }
     }
 
+    //Выборка всех клиентов
     @Override
     public Collection<Client> values(){
         return transaction((Session session)->session.createQuery("from Client").list());
@@ -64,6 +65,7 @@ public class HibernateStorage implements Storage{
         });
     }
 
+    //Добавление клиента в БД
     @Override
     public int add(Client client) {
         Set<Pet>  pets  = client.getPets();
@@ -82,6 +84,7 @@ public class HibernateStorage implements Storage{
         return clientId;
     }
 
+    //обновить данные клиента
     @Override
     public void edit(Client client){
           transaction((Session session) -> {
@@ -90,10 +93,13 @@ public class HibernateStorage implements Storage{
         });
     }
 
+    //Получить клиента по ID
     @Override
     public Client get(int id){
         return transaction(session -> (Client)session.get(Client.class,id));
     }
+
+    //Удалить клиента из БД
     @Override
     public void delete(final int id){
         transaction((session) -> {
@@ -108,6 +114,7 @@ public class HibernateStorage implements Storage{
         });
     }
 
+    //Удалить питомца из БД
     public void deletePet(int id){
         transaction((session)->{
             Pet pet = (Animal)session.get(Animal.class,id);
@@ -117,11 +124,8 @@ public class HibernateStorage implements Storage{
     }
 
     /**
-     *
-     * @param clientName
-     * @param petName
-     * @param petType
-     * @return
+     * Поиск клиентов по критериям
+     * @return Список клиентов, подходящих критериям
      */
     @Override
     public List<Client> find(String clientName, String petName, int petType){

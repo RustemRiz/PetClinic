@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * Сервлет для редактирования клиента
  * Created by Рустем on 03.09.2017.
  */
 public class ClinicEditServlete extends HttpServlet {
-   ClientCache cache = ClientCache.getInstance();
+   private ClientCache cache = ClientCache.getInstance();
    private final String EDIT_PAGE = "/views/clinic/ClinicEdit.jsp";
    private Client currentClient;
 
@@ -32,15 +33,12 @@ public class ClinicEditServlete extends HttpServlet {
     private void updateData(HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException {
         editClient(req,resp);
         addPet(req,resp);
-//        deletePet(req, resp);
     }
 
     /**
-     *
-     * Сохраняем изменения клиента
-     * @param req Запрос
+     * Выгрузка изменений клиента в БД
      */
-    //TODO добавить измененния животных
+    //TODO добавить измененния питомцев
     private void editClient(HttpServletRequest req,HttpServletResponse resp) throws IOException{
         if(req.getParameter("editSubmit")!= null) {
             if (!currentClient.getName().equals(req.getParameter("clientName"))) {
@@ -53,7 +51,6 @@ public class ClinicEditServlete extends HttpServlet {
 
     private void addPet(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException {
         if(req.getParameter("addPetSubmit") != null){
-            //TODO добавить поддержку выбор типа питомца
             int type = Integer.valueOf(req.getParameter("newPetType"));
             Pet pet = new Animal(req.getParameter("newPetName"),new Pet_type(type),currentClient);
             cache.addObject(pet);

@@ -21,7 +21,7 @@
 <div id="main">
     <div id="find">
         <form action="${pageContext.servletContext.contextPath}/clinic/view" method="GET">
-            <input type="submit" name="addClient"  id="addButton" value="Добавить">
+            <input type="submit" name="addClient" id="addButton" value="Добавить клиента">
         </form>
         <form action="${pageContext.servletContext.contextPath}/clinic/view" method="post">
             <table>
@@ -68,7 +68,6 @@
                         <td>${client.id}</td>
                         <td>${client.name}</td>
                         <td align="center">${client.pets.size()}</td>
-                        <%--Доделать поддержку количества животных--%>
                         <td>
                             <a href="${pageContext.servletContext.contextPath}/clinic/edit?id=${client.id}">Редактировать</a>
                             <a href="${pageContext.servletContext.contextPath}/clinic/delete?id=${client.id}">Удалить</a>

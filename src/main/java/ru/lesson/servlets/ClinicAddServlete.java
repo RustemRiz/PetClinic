@@ -35,7 +35,7 @@ public class ClinicAddServlete extends HttpServlet {
         req.setAttribute("addClient",null);
         req.getRequestDispatcher(CLIENT_VIEW).forward(req,resp);
     }
-
+    //Добавление клиента в БД
     private void addClient(HttpServletRequest req){
         cache.add(new Client(req.getParameter("clientName"), null));
     }
