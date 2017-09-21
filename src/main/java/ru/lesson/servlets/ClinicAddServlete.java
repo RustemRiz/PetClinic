@@ -37,10 +37,7 @@ public class ClinicAddServlete extends HttpServlet {
     }
 
     private void addClient(HttpServletRequest req){
-        String type = req.getParameter("petType");
-        PetType petType = PetType.getPetTypeByString(req.getParameter("petType"));
-        Pet pet = PetFactory.createPet(petType, req.getParameter("petName"));
-        cache.add(new Client(req.getParameter("clientName"), pet));
+        cache.add(new Client(req.getParameter("clientName"), null));
     }
     @Override
     public void destroy(){

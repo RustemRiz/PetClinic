@@ -1,3 +1,4 @@
+/*
 package ru.lesson.store;
 
 import ru.lesson.models.*;
@@ -6,17 +7,21 @@ import java.sql.*;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+*/
 /**
  * Created by Рустем on 10.09.2017.
- */
-public class JdbcStorage implements Storage{
+ *//*
+
+public class JdbcStorage {
     //Connection to DB
     private final Connection connection;
     //Текущий клиент
     private Client currentClient = null;
 
+*/
 /*    Запросы БД
-                    */
+                    *//*
+
 public static final String SQL_ADD_CLIENT = "INSERT INTO client (name) VALUES (?)";
 public static final String SQL_ADD_PET_TO_CURRENT_CLIENT ="INSERT INTO pet(nick,client_id,type_id) VALUES (?,?,?)";
 public static final String SQL_REMOVE_ALL_PETS_OF_CLIENT = "DELETE from pet WHERE client_id = ?";
@@ -50,7 +55,7 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
         ResultSet rs = statement.executeQuery(SQL_GET_ALL_CLIENTS_WITH_PETS)) {
             while (rs.next()){
                 Pet pet = PetFactory.createPet(PetType.getPetTypeByString(rs.getString("type_id")),rs.getString("nick"));
-                clients.add(new Client(rs.getInt("uid"),rs.getString("name"),pet));
+//                clients.add(new Client(rs.getInt("uid"),rs.getString("name"),pet));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,11 +63,13 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
         return clients;
     }
 
-    /**
+    */
+/**
      * Добавление клиента в базу
      * @param client Клиент для добавления
      * @return ID добавленного клиента
-     */
+     *//*
+
     @Override
     public int add(Client client) {
         try(final PreparedStatement statement = connection.prepareStatement(SQL_ADD_CLIENT,Statement.RETURN_GENERATED_KEYS)){
@@ -72,8 +79,8 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
                 if (generatedKeys.next()){
                     int client_uid = generatedKeys.getInt("uid");
                     client.setId(client_uid);
-                    Pet pet = client.getPet();
-                    addPetToClient(pet.getName(),client_uid,pet.getPetType().getValue());
+//                    Pet pet = client.getPets();
+//                    addPetToClient(pet.getName(),client_uid,pet.getPetType().getValue());
                     return client_uid;
                 }
             }
@@ -84,44 +91,52 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
         return -1;
     }
 
-    /**
+    */
+/**
      * Добавление питомца клиента
      * @param name Кличка питомца
      * @param client_uid    ID клиента
      * @param type_id       ID типа животного
-     */
+     *//*
+
     public void addPetToClient(String name,int client_uid,int type_id){
         executeUpdateForPreparedStatement(SQL_ADD_PET_TO_CURRENT_CLIENT,name,client_uid,type_id);
     }
 
-    /**
+    */
+/**
      * Изменяет параметры клиента с таким же ID на параметры нового клиента
      * @param client Новый клиент для вставки в бд
-     */
+     *//*
+
     @Override
     public void edit(Client client) {
         executeUpdateForPreparedStatement(SQL_EDIT_CLIENT,client.getName(),client.getId());
-        Pet pet = client.getPet();
-        int type = pet.getPetType().getValue();
-        executeUpdateForPreparedStatement(SQL_EDIT_PET, pet.getName(),type,client.getId());
+//        Pet pet = client.getPets();
+//        int type = pet.getPetType().getValue();
+//        executeUpdateForPreparedStatement(SQL_EDIT_PET, pet.getName(),type,client.getId());
     }
 
 
     @Override
-    /**
+    */
+/**
      * Удаляет клиента с данным ID из БД вместе со всеми его животными
      * @param id ID клиента
-     */
+     *//*
+
     public void delete(int id) {
         executeUpdateForPreparedStatement(SQL_REMOVE_ALL_PETS_OF_CLIENT,id);
         executeUpdateForPreparedStatement(SQL_REMOVE_CLIENT_BY_ID, id);
     }
 
-    /**
+    */
+/**
      * Возвращает клиента по ID вместе с питомцем
      * @param id ID клиента
      * @return Клиент с данным ID
-     */
+     *//*
+
     @Override
     public Client get(final int id) {
         Client client = null;
@@ -130,7 +145,7 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
             ResultSet resultSet = statement.executeQuery();
                 if(resultSet.next()){
                     Pet pet = PetFactory.createPet(PetType.getPetTypeByString(resultSet.getString("type_id")),resultSet.getString("nick"));
-                    client = new Client(resultSet.getInt("uid"),resultSet.getString("name"),pet);
+//                    client = new Client(resultSet.getInt("uid"),resultSet.getString("name"),pet);
                 }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -139,7 +154,7 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
     }
 
     @Override
-    public List<Client> find(String clientName, String petName, String petType) {
+    public List<Client> find(String clientName, String petName, int petType) {
         final List<Client> clients = new CopyOnWriteArrayList<>();
         try(PreparedStatement statement = connection.prepareStatement(SQL_FIND_BY_NAME_NICK_PET_TYPE)) {
             statement.setString(1,clientName);
@@ -147,8 +162,8 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()){
                 Pet pet = PetFactory.createPet(PetType.getPetTypeByString(resultSet.getString("type_id")),resultSet.getString("nick"));
-                Client client = new Client(resultSet.getInt("uid"),resultSet.getString("name"),pet);
-                clients.add(client);
+//                Client client = new Client(resultSet.getInt("uid"),resultSet.getString("name"),pet);
+//                clients.add(client);
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -202,3 +217,4 @@ public static final String SQL_FIND_BY_NAME_NICK_PET_TYPE = "SELECT client.uid,c
         }
     }
 }
+*/

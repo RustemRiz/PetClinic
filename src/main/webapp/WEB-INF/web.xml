@@ -4,8 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
     <display-name>ClinicServlet</display-name>
+    <context-param>
+        <param-name>javax.faces.CONFIG_FILES</param-name>
+        <param-value>hibernate.config.xml</param-value>
+    </context-param>
 
-    
 
     <servlet>
         <servlet-name>ClinicViewServlete</servlet-name>
@@ -37,14 +40,32 @@
         <url-pattern>/clinic/delete</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>DeletePetServlete</servlet-name>
+        <servlet-class>ru.lesson.servlets.DeletePetServlete</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeletePetServlete</servlet-name>
+        <url-pattern>/clinic/deletePet</url-pattern>
+    </servlet-mapping>
 
     <servlet>
         <servlet-name>ClinicEditServlete</servlet-name>
         <servlet-class>ru.lesson.servlets.ClinicEditServlete</servlet-class>
     </servlet>
+
+    <!--<servlet>-->
+        <!--<servlet-name>Faces Servlet</servlet-name>-->
+        <!--<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>-->
+        <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
     <servlet-mapping>
         <servlet-name>ClinicEditServlete</servlet-name>
         <url-pattern>/clinic/edit</url-pattern>
     </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>Faces Servlet</servlet-name>-->
+        <!--<url-pattern>*.xhtml</url-pattern>-->
+    <!--</servlet-mapping>-->
 
 </web-app>

@@ -54,30 +54,31 @@
 
     <div id = "result">
         <c:choose>
-        <c:when test="${clients.size()>0}">
-            <h1 align="center">Клиенты</h1>
-            <table align="center" border="2">
-                <tr>
-                    <td>ID</td>
-                    <td>Хозяин</td>
-                    <td>Питомец</td>
-                    <td>Действия</td>
-            </tr>
-            <c:forEach items = "${clients}" var = "client" varStatus = "status">
-                <tr>
-                    <td>${client.id}</td>
-                    <td>${client.name}</td>
-                    <td>${client.pet.name}</td>
-                    <td>
-                        <a href="${pageContext.servletContext.contextPath}/clinic/edit?id=${client.id}">Редактировать</a>
-                        <a href="${pageContext.servletContext.contextPath}/clinic/delete?id=${client.id}">Удалить</a>
-                    </td>
+            <c:when test="${clients.size()>0}">
+                <h1 align="center">Клиенты</h1>
+                <table align="center" border="2">
+                    <tr>
+                        <td>ID</td>
+                        <td>Хозяин</td>
+                        <td>Количество питомцев</td>
+                        <td>Действия</td>
                 </tr>
-            </c:forEach>
-            </c:when>
-            <c:otherwise>
-                <h3>Клиенты не найдены!</h3>
-            </c:otherwise>
+                <c:forEach items = "${clients}" var = "client" varStatus = "status">
+                    <tr>
+                        <td>${client.id}</td>
+                        <td>${client.name}</td>
+                        <td align="center">${client.pets.size()}</td>
+                        <%--Доделать поддержку количества животных--%>
+                        <td>
+                            <a href="${pageContext.servletContext.contextPath}/clinic/edit?id=${client.id}">Редактировать</a>
+                            <a href="${pageContext.servletContext.contextPath}/clinic/delete?id=${client.id}">Удалить</a>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <h3>Клиенты не найдены!</h3>
+                </c:otherwise>
 
             </c:choose>
         </table>

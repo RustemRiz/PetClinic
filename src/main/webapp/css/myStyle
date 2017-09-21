@@ -30,7 +30,7 @@ label {
     display: flex;
     /*justify-content: space-between;*/
     vertical-align: top;
-    border: 2px dotted #000;
+    /*border: 2px dotted #000;*/
     margin: 20% 0 5%;
     top:20%;
 
@@ -43,24 +43,32 @@ label {
 }
 
 #find{
-    font-size: 20pt;
+    font-size: 30pt;
     flex-grow: 1;
-    border: 2px dotted #f00;
+    margin-left: 5%;
+    /*border: 2px dotted #f00;*/
     /*width: 30%;*/
    /* left:0;
     right: 70%;*/
 
     /*margin: 0 70% 0 0;*/
     /*float: left ;*/
-    background: #d0ffd0;
+    background: #d0ffc0;
     overflow: hidden;
     }
+#edit{
+    flex-grow: 1;
+    /*border: 5px dotted darkmagenta;*/
+    background: #d0ffd0;
+    margin: 5% 30% 10% 30%;
+    padding: 5% 30% 10% 10%;
+}
 
 #result{
     flex-grow:3;
-    border: 2px dotted #0f0;
+    /*border: 2px dotted #0f0;*/
     /*margin: 0 0 0 30%;*/
-    background: #aff6af;
+    background: #d0ffd0;
 
 }
 .form div{
@@ -70,6 +78,6 @@ label {
 
 table, th, td{
     border-collapse: collapse;
-    border: 1px solid black;
+    border: 1px solid darkgrey;
     /*padding: 2px 5px 2px 5px;*/
 }

@@ -9,8 +9,9 @@ public class Cat extends Animal {
 
     public Cat(String name) {
         super(name);
-        super.petType = PetType.CAT;
+        super.petType = new Pet_type(2,"Кошка");
     }
+
 
 
     @Override

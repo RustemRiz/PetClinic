@@ -1,6 +1,9 @@
 package ru.lesson.store;
 
+import ru.lesson.models.Animal;
 import ru.lesson.models.Client;
+import ru.lesson.models.Id;
+import ru.lesson.models.Pet;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,15 +20,20 @@ public interface Storage {
 
     int add(final Client client);
 
+    <T extends Id>int addObject(T object);
+
     void edit(final Client client);
 
     void delete(final int id);
 
     Client get(final int id);
 
-    List<Client> find(String clientName, String petName, String petType);
+    List<Client> find(String clientName, String petName, int petType);
+
+    void deletePet(int id);
 
     int generateId();
 
     void close();
+
 }

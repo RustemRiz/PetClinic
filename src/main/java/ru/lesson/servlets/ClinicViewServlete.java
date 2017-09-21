@@ -45,7 +45,6 @@ public class ClinicViewServlete extends HttpServlet {
         }
     }
 
-
     private void processNotAddClient(HttpServletRequest req,HttpServletResponse resp) throws ServletException, IOException{
         if(req.getParameter("addClient")==null){
             setDoGetAttributes(req);
@@ -63,7 +62,6 @@ public class ClinicViewServlete extends HttpServlet {
     }
 
 
-
     /**
      * Обработка фильтров поиска заданных пользователем на странице
      * @param req Запрос
@@ -76,9 +74,7 @@ public class ClinicViewServlete extends HttpServlet {
             sb.setLength(0);
             sb.append("%").append(req.getParameter("findPetName")).append("%");
             String petName = sb.toString();
-            String petType;
-            if (req.getParameter("findPetType").equals("3")) petType = "";
-            else petType = req.getParameter("findPetType");
+            int petType = Integer.valueOf(req.getParameter("findPetType"));
             clientsToShow = cache.find(clientName,petName, petType);
         }
     }
@@ -88,8 +84,6 @@ public class ClinicViewServlete extends HttpServlet {
         super.destroy();
         cache.close();
     }
-
-
 
 }
 

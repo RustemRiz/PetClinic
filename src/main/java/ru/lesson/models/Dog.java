@@ -7,10 +7,8 @@ public class Dog extends Animal{
 
       public Dog(String name) {
         super(name);
-        petType= PetType.DOG;
+//        petType= PetType.DOG;
     }
-
-
 
 
     @Override
